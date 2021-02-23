@@ -29,15 +29,10 @@ class _DisplayCardState extends State<DisplayCard> {
         child: Text("${widget.title}",style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: ResponsiveFlutter.of(context).fontSize(2)),),
       ),
     ),
-
     ] ;
-
-
     var up = widget.upper.length;
     double cardheight = widget.upper.length.toDouble()*1.2/10;
     print(widget.upper.length);
-
-
     for(var i=0;i<up-1;i=i+2){
       text.add(Expanded(
           flex: 2,
@@ -66,31 +61,16 @@ class _DisplayCardState extends State<DisplayCard> {
       text.add(Padding(
         padding: const EdgeInsets.all(8.0),
         child: RaisedButton(
-
           onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.white,fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),),),
-      ));
-
-
-
-    }
-
-
+      ));}
     return Padding(
       padding:  EdgeInsets.fromLTRB(30,20,30,20),
       child: Container(
         height: MediaQuery.of(context).size.height*cardheight,
         decoration: BoxDecoration( color: Colors.white,
           borderRadius: BorderRadius.circular(20),
-
-
-          border:
-          Border.all(width: 1.3,color:Colors.purple),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+          border: Border.all(width: 1.3,color:Colors.purple),
+          boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.5), spreadRadius: 5, blurRadius: 7, offset: Offset(0, 3), // changes position of shadow
             ),
           ],
         ),

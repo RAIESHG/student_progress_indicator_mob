@@ -15,7 +15,7 @@ class _ViewAssignmentState extends State<ViewAssignment> {
       ),
         backgroundColor: Colors.grey[100],
         body: FutureBuilder(
-            future: db.fetchAssignment("2020-05-08"),
+            future: db.fetchAssignment("2020-02-02"),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data != null) {
                 return (ListView.builder(
@@ -30,10 +30,6 @@ class _ViewAssignmentState extends State<ViewAssignment> {
                             Text(snapshot.data[index].assignment),
                             Text(snapshot.data[index].assigndate),
                             Text(snapshot.data[index].duedate),
-
-
-
-
                           ],
                         ),
                       );

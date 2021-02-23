@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
     var res = await http.post(
         "http://$BASE_URL/login",
         body: {
-          "username": username,
+          "email": username,
           "password": password
         }
     );
@@ -34,8 +34,8 @@ class LoginPage extends StatelessWidget {
     var res = await http.post(
         'http://$BASE_URL/signup',
         body: {
-          "username": username,
-          "password": password
+          "username":username,
+          "password":password
         }
     );
     return res.statusCode;

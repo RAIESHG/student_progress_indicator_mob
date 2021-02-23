@@ -6,6 +6,7 @@ class ViewProfile extends StatefulWidget {
   @override
   _ViewProfileState createState() => _ViewProfileState();
 }
+
 Database db = Database();
 class _ViewProfileState extends State<ViewProfile> {
   @override
@@ -27,11 +28,10 @@ class _ViewProfileState extends State<ViewProfile> {
                       return Container(
                         child: Column(
                           children: [
-                            DisplayCard(title:"${snapshot.data[index].studentname}",upper: ["Class","Section","Email","PhoneNumber"],btn1title: "Proceed",
-
-                              lower: ["${snapshot.data[index].classs}","${snapshot.data[index].section}","${snapshot.data[index].email}","${snapshot.data[index].phonenumber}"],),
-
-                          ],
+                            DisplayCard(title:"${snapshot.data[index].studentname}",
+                              upper: ["Class","Section","Email","PhoneNumber"],btn1title: "Proceed",
+                              lower: ["${snapshot.data[index].classs}","${snapshot.data[index].section}",
+                                "${snapshot.data[index].email}","${snapshot.data[index].phonenumber}"],),],
                         ),
                       );
 

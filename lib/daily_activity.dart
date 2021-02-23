@@ -12,7 +12,7 @@ class _DailyActivityState extends State<DailyActivity> {
     return  Scaffold(
         backgroundColor: Colors.grey[100],
         body: FutureBuilder(
-        future: db.fetchActivity("2020-01-01"),
+        future: db.fetchActivity("2020-02-02"),
     builder: (BuildContext context, AsyncSnapshot snapshot) {
     if (snapshot.data != null) {
     return (ListView.builder(
@@ -21,12 +21,9 @@ class _DailyActivityState extends State<DailyActivity> {
     itemCount: snapshot.data.length,
     itemBuilder: (BuildContext context, int index) {
       return Text(snapshot.data[0].attendance);
-
-
       }));
   }else{
       return CircularProgressIndicator();
-
     }
     }));
   }
