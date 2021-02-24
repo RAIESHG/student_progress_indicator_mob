@@ -1,5 +1,9 @@
+import 'dart:io';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:student_progress_indicator_mob/dashboard.dart';
+import 'package:student_progress_indicator_mob/view_assignment.dart';
 import 'package:student_progress_indicator_mob/view_profile.dart';
 
 import 'main.dart';
@@ -27,6 +31,9 @@ class LoginPage extends StatelessWidget {
           "password": password
         }
     );
+    var jsonData = json.decode((res.body));
+    print(jsonData);
+    studentid=jsonData[0]['studentid'].toString();
     return res.statusCode;
   }
 
@@ -38,6 +45,7 @@ class LoginPage extends StatelessWidget {
           "password":password
         }
     );
+
     return res.statusCode;
 
   }
@@ -71,7 +79,7 @@ class LoginPage extends StatelessWidget {
                     if(jwt==200){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ViewProfile()),
+                        MaterialPageRoute(builder: (context) => Dashboard()),
                       );
                       print('Login Sucessfull');
                     }

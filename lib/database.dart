@@ -2,6 +2,7 @@ import 'package:student_progress_indicator_mob/activity_model.dart';
 import 'package:student_progress_indicator_mob/assignment_model.dart';
 import 'package:student_progress_indicator_mob/main.dart';
 import 'package:http/http.dart' as http;
+import 'package:student_progress_indicator_mob/progress_model.dart';
 import 'package:student_progress_indicator_mob/student_model.dart';
 import 'dart:convert';
 import 'package:student_progress_indicator_mob/user_model.dart';
@@ -11,8 +12,9 @@ class Database{
   Future<List<Assignment>> fetchAssignment(String assigndate) async {
     var response;
     int statusCode;
+    print(studentid+"axaxa");
     var data = await http
-        .get("http://$BASE_URL/getassignment?assigndate=$assigndate"); //link ma bhako sabai kura
+        .get("http://$BASE_URL/getassignment?assigndate=$assigndate&studentid=$studentid"); //link ma bhako sabai kura
 
     var jsonData = json.decode((data.body)); //json data matrai nikalna
     // If the server did return a 200 OK response,
@@ -31,16 +33,18 @@ class Database{
     int statusCode;
     print("$BASE_URL");
     print(date);
-    var data = await http.get('http://$BASE_URL/getactivity?date=$date'); //link ma bhako sabai kura
+    var data = await http.get('http://$BASE_URL/getactivity?date=$date&studentid=$studentid'); //link ma bhako sabai kura
     var jsonData = json.decode((data.body)); //json data matrai nikalna
     // If the server did return a 200 OK response,
     // then parse the JSON.
     List<ActivityModel> activitylist = [];
     for (var each in jsonData) {
-      ActivityModel activityobj = ActivityModel(date: each["date"],attendance:each["attendance"],notice: each["notice"],complain: each["complain"]);
+      ActivityModel activityobj = ActivityModel(date: each["date"],attendance:each["attendance"],notice: each["notice"],complain: each["complaines"]);
       activitylist.add(activityobj);
+
     }
-    return activitylist;
+   return activitylist;
+
   }
 
   Future<List<UserModel>> fetchUserDetails() async {
@@ -62,7 +66,7 @@ class Database{
   Future<List<StudentModel>> fetchstudent() async {
     var response;
     int statusCode;
-    var data = await http.get('http://$BASE_URL/getstudentinformation');
+    var data = await http.get('http://$BASE_URL/getstudentinformation?studentid=$studentid');
     var jsonData = json.decode((data.body));
     List<StudentModel> studentinfolist = [];
     print(jsonData);
@@ -78,5 +82,22 @@ class Database{
       studentinfolist.add(studentobj);
     }
     return studentinfolist;
+  }
+  Future<List<ProgressModel>> studentprogress() async {
+    var response;
+    int statusCode;
+    var data = await http.get(
+        "http://$BASE_URL/getprogress?studentid=$studentid");
+    var jsonData = json.decode((data.body));
+    List<ProgressModel> progresslist = [];
+    print(jsonData);
+    for (var each in jsonData) {
+      ProgressModel progressModel = ProgressModel(
+          attendance: each["attendance"].toString()
+          ,complain:each["complaines"].toString(),
+         );
+      progresslist.add(progressModel);
+    }
+    return progresslist;
   }
 }
