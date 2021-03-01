@@ -18,7 +18,7 @@ class _DailyActivityState extends State<DailyActivity> {
       ),
         backgroundColor: Colors.grey[100],
         body: FutureBuilder(
-        future: db.fetchActivity("2020-02-02"),
+        future: db.fetchActivity("2020-02-03"),
     builder: (BuildContext context, AsyncSnapshot snapshot) {
     if (snapshot.data != null) {
     return (ListView.builder(

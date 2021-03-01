@@ -4,6 +4,7 @@ import 'package:student_progress_indicator_mob/login.dart';
 import 'package:student_progress_indicator_mob/view_assignment.dart';
 import 'package:student_progress_indicator_mob/view_profile.dart';
 import 'package:student_progress_indicator_mob/view_progress.dart';
+import 'package:student_progress_indicator_mob/view_result.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -39,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                children: [
                  ButtonRow(context,"Assignment","Daily Activities",ViewAssignment(),DailyActivity()),
-                ButtonRow(context, "View Profile", "View Result",ViewProfile(),Container()),
+                ButtonRow(context, "View Profile", "View Result",ViewProfile(),ViewResult()),
                  ButtonRow(context, "View Progress", "Logout",ViewProgress(),LoginPage()),],
              ),
            ),
@@ -74,6 +75,7 @@ class _DashboardState extends State<Dashboard> {
       width: MediaQuery.of(context).size.width*0.3,
 
       decoration: BoxDecoration(
+
       borderRadius: BorderRadius.circular(10),
 
 
