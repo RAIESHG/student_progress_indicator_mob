@@ -10,7 +10,7 @@ import 'package:student_progress_indicator_mob/view_progress.dart';
 
 String studentid="2";
 Database db = Database();
-String BASE_URL = '192.168.2.6:3000';
+String BASE_URL = '192.168.2.12:3000';
 void main() {
   db.fetchstudent();
 

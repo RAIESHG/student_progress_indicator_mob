@@ -23,6 +23,7 @@ environment:
 dependencies:
   google_fonts: ^1.1.1
   responsive_flutter: ^0.0.4
+  syncfusion_flutter_gauges: ^18.4.47
   flutter_datetime_picker:
 
   http:
