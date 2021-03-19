@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:student_progress_indicator_mob/main.dart';
+import 'file:///E:/Projects/student_progress_indicator_mob/lib/View/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

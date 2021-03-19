@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:student_progress_indicator_mob/database.dart';
-import 'package:student_progress_indicator_mob/gauge.dart';
-import 'package:student_progress_indicator_mob/information_card.dart';
+import 'package:student_progress_indicator_mob/Controller/database.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/gauge.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
+
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 

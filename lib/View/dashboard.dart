@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:student_progress_indicator_mob/daily_activity.dart';
-import 'package:student_progress_indicator_mob/login.dart';
-import 'package:student_progress_indicator_mob/view_assignment.dart';
-import 'package:student_progress_indicator_mob/view_profile.dart';
-import 'package:student_progress_indicator_mob/view_progress.dart';
-import 'package:student_progress_indicator_mob/view_result.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/datepicker.dart';
+import 'package:student_progress_indicator_mob/View/daily_activity.dart';
+import 'package:student_progress_indicator_mob/View/login.dart';
+import 'package:student_progress_indicator_mob/View/view_assignment.dart';
+import 'package:student_progress_indicator_mob/View/view_profile.dart';
+import 'package:student_progress_indicator_mob/View/view_progress.dart';
+import 'package:student_progress_indicator_mob/View/view_result.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -39,8 +40,8 @@ class _DashboardState extends State<Dashboard> {
              child: Column(
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                children: [
-                 ButtonRow(context,"Assignment","Daily Activities",ViewAssignment(),DailyActivity()),
-                ButtonRow(context, "View Profile", "View Result",ViewProfile(),ViewResult()),
+                 ButtonRow(context,"Assignment","Daily Activities",DatePick(choosen: 'assignment',),DatePick(choosen: 'activity',)),
+                ButtonRow(context, "View Profile", "View Result",ViewProfile(),DatePick(choosen: 'result',)),
                  ButtonRow(context, "View Progress", "Logout",ViewProgress(),LoginPage()),],
              ),
            ),
@@ -64,6 +65,10 @@ class _DashboardState extends State<Dashboard> {
   Widget ButtonContainer(BuildContext context,String text, Widget page){
     return InkWell(
       onTap: (){
+        if(text=='Logout') {
+          Navigator.pop(context);
+        }
+
 
         Navigator.push(
           context,

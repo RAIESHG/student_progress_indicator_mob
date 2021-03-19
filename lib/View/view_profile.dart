@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:student_progress_indicator_mob/database.dart';
-import 'package:student_progress_indicator_mob/information_card.dart';
+import 'package:student_progress_indicator_mob/Controller/database.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
+
 
 
 class ViewProfile extends StatefulWidget {

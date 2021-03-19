@@ -24,7 +24,9 @@ dependencies:
   google_fonts: ^1.1.1
   responsive_flutter: ^0.0.4
   syncfusion_flutter_gauges: ^18.4.47
+  another_flushbar: ^1.10.17
   flutter_datetime_picker:
+  lottie: ^1.0.1
 
   http:
   flutter:

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:student_progress_indicator_mob/database.dart';
-import 'package:student_progress_indicator_mob/information_card.dart';
+import 'package:student_progress_indicator_mob/Controller/database.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
+
 
 class ViewAssignment extends StatefulWidget {
+  final String date;
+
+  const ViewAssignment({Key key, this.date}) : super(key: key);
   @override
   _ViewAssignmentState createState() => _ViewAssignmentState();
 }
@@ -18,7 +22,7 @@ class _ViewAssignmentState extends State<ViewAssignment> {
       ),
         backgroundColor: Colors.grey[100],
         body: FutureBuilder(
-            future: db.fetchAssignment("2020-02-02"),
+            future: db.fetchAssignment("${widget.date}"),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data != null) {
                 return (ListView.builder(

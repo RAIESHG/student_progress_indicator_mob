@@ -1,12 +1,14 @@
-import 'package:student_progress_indicator_mob/activity_model.dart';
-import 'package:student_progress_indicator_mob/assignment_model.dart';
-import 'package:student_progress_indicator_mob/main.dart';
 import 'package:http/http.dart' as http;
-import 'package:student_progress_indicator_mob/progress_model.dart';
-import 'package:student_progress_indicator_mob/result_model.dart';
-import 'package:student_progress_indicator_mob/student_model.dart';
+import 'package:student_progress_indicator_mob/Models/activity_model.dart';
 import 'dart:convert';
-import 'package:student_progress_indicator_mob/user_model.dart';
+
+import 'package:student_progress_indicator_mob/Models/assignment_model.dart';
+import 'package:student_progress_indicator_mob/Models/progress_model.dart';
+import 'package:student_progress_indicator_mob/Models/result_model.dart';
+import 'package:student_progress_indicator_mob/Models/student_model.dart';
+import 'package:student_progress_indicator_mob/Models/user_model.dart';
+import 'package:student_progress_indicator_mob/View/main.dart';
+
 
 class Database{
 
@@ -119,5 +121,31 @@ class Database{
       progresslist.add(progressModel);
     }
     return progresslist;
+  }
+  Future<int> attemptLogIn(String username, String password) async {
+    var res = await http.post(
+        "http://$BASE_URL/login",
+        body: {
+          "email": username,
+          "password": password
+        }
+    );
+    var jsonData = json.decode((res.body));
+    print(jsonData);
+    studentid=jsonData[0]['studentid'].toString();
+    return res.statusCode;
+  }
+
+  Future<int> attemptSignUp(String username, String password) async {
+    var res = await http.post(
+        'http://$BASE_URL/signup',
+        body: {
+          "username":username,
+          "password":password
+        }
+    );
+
+    return res.statusCode;
+
   }
 }

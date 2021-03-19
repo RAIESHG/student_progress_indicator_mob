@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:student_progress_indicator_mob/database.dart';
-import 'package:student_progress_indicator_mob/gauge.dart';
-import 'package:student_progress_indicator_mob/information_card.dart';
+import 'package:student_progress_indicator_mob/Controller/database.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/gauge.dart';
+
+import 'ReuseableCodes/information_card.dart';
+
 
 class ViewResult extends StatefulWidget {
+  final String date;
+
+  const ViewResult({Key key, this.date}) : super(key: key);
   @override
   _ViewResultState createState() => _ViewResultState();
 }
@@ -20,7 +25,7 @@ class _ViewResultState extends State<ViewResult> {
         ),
         backgroundColor: Colors.grey[100],
         body: FutureBuilder(
-            future: db.fetchresult("2020-02-02"),
+            future: db.fetchresult("${widget.date}"),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data != null) {
                 return (ListView.builder(
@@ -40,7 +45,7 @@ class _ViewResultState extends State<ViewResult> {
                         resultColor=Colors.orange;
 
                       }
-                      return new Gauge( value:double.parse(snapshot.data[index].grade),annotation:"${snapshot.data[index].subject}", pointerColor: resultColor);
+                      return new Gauge( value:double.parse(snapshot.data[index].grade),annotation:"${snapshot.data[index].subject}", pointerColor: Colors.deepPurple.withOpacity(0.7));
                     }));
               }else{
                 return CircularProgressIndicator();
