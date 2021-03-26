@@ -4,9 +4,8 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 class Gauge extends StatefulWidget {
   @override
   final double value;
-  final     String annotation;
+  final String annotation;
   final Color pointerColor;
-
   const Gauge({Key key, this.value, this.annotation, this.pointerColor}) : super(key: key);
   _GaugeState createState() => _GaugeState();
 }
@@ -14,7 +13,6 @@ class Gauge extends StatefulWidget {
 class _GaugeState extends State<Gauge> {
   @override
   Widget build(BuildContext context) {
-
       return SfRadialGauge(
           enableLoadingAnimation: true,
           axes:<RadialAxis>[RadialAxis(ranges: <GaugeRange>[
@@ -30,7 +28,7 @@ class _GaugeState extends State<Gauge> {
                 GaugeAnnotation(
                     angle: 90,
                     axisValue: 5,
-                    positionFactor: 0.2,
+                    positionFactor: 0.1,
                     widget: Text('${widget.value}%',
                         style: TextStyle(
                             fontSize: 30,
@@ -41,7 +39,7 @@ class _GaugeState extends State<Gauge> {
                 GaugeAnnotation(
                     angle: 90,
                     axisValue: 5,
-                    positionFactor: 0.5,
+                    positionFactor: 0.3,
                     widget: Text('${widget.annotation}',
                         style: TextStyle(
                             fontSize: 20,
@@ -51,7 +49,5 @@ class _GaugeState extends State<Gauge> {
                 )
               ] ),]
       );
-
-
   }
 }

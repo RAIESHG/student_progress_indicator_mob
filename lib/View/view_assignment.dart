@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_progress_indicator_mob/Controller/database.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
+import 'package:student_progress_indicator_mob/View/main.dart';
 
 
 class ViewAssignment extends StatefulWidget {
@@ -18,9 +19,11 @@ class _ViewAssignmentState extends State<ViewAssignment> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("View Assignment")),
+        title: Center(child: Text("Assignments")),
+        backgroundColor: Colors.deepPurpleAccent,
+
       ),
-        backgroundColor: Colors.grey[100],
+
         body: FutureBuilder(
             future: db.fetchAssignment("${widget.date}"),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -30,10 +33,18 @@ class _ViewAssignmentState extends State<ViewAssignment> {
                     primary: false,
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      information=[ic.informationcontents("Subject:"+snapshot.data[index].subject,"Assignment Details: "+snapshot.data[index].assignment),
-                        ic.informationcontents("Assign Date: "+snapshot.data[index].assigndate,"Due Date: "+snapshot.data[index].duedate),
+                      information=[ic.informationcontents("Subject:",snapshot.data[index].subject,"Assignment Details: ",snapshot.data[index].assignment,Icons.book,Icons.assignment,context),
+                        ic.informationcontents("Assign Date: ",snapshot.data[index].assigndate,"Due Date: ",snapshot.data[index].duedate,Icons.date_range,Icons.date_range_sharp,context),
+                        SizedBox(height: size.height*0.1,),
                       ];
-                      return ic.informationcard(context,information);
+                      return Container(
+                        height: MediaQuery.of(context).size.height*0.5,
+                        width: MediaQuery.of(context).size.width*0.9,
+                        child: Column(
+                          children: information
+                        ),
+
+                      );
                     }));
               }else{
                 return CircularProgressIndicator();

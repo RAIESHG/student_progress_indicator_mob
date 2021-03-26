@@ -13,32 +13,31 @@ class ViewProgress extends StatefulWidget {
 Color attendanceColor = Colors.green;
 Color resultColor = Colors.green;
 Color complainColor = Colors.green;
-
 Database db = Database();
 InformationCard ic= InformationCard();
 List<Widget> information;
+
 class _ViewProgressState extends State<ViewProgress> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(
-          title: Center(child: Text(" View Progress")),
+          backgroundColor: Colors.deepPurpleAccent,
+          title: Center(child: Text("Progress")),
         ),
         backgroundColor: Colors.grey[100],
         body: FutureBuilder(
             future: db.studentprogress(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-
-
               if (snapshot.data != null) {
                 return (ListView.builder(
                     shrinkWrap: true,
                     primary: false,
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      double attendance = double.parse(snapshot.data[index].attendance);
-                      double complain = double.parse(snapshot.data[index].complain);
-                      double marks = double.parse(snapshot.data[index].averagemarks);
+                      double attendance = (double.parse(snapshot.data[index].attendance)).roundToDouble();
+                      double complain = (double.parse(snapshot.data[index].complain)).roundToDouble();
+                      double marks = (double.parse(snapshot.data[index].averagemarks)).roundToDouble();
                       String grades="Grades";
                       String attendancelabel="Attendance";
                       String complainlabel="Complain";
@@ -54,8 +53,6 @@ class _ViewProgressState extends State<ViewProgress> {
                         complainlabel="No Record";
                         marks=0;
                       }
-
-
                       if(attendance<50){
                         attendanceColor=Colors.red;
                       }
@@ -80,16 +77,19 @@ class _ViewProgressState extends State<ViewProgress> {
                         resultColor=Colors.orange;
 
                       }
-                      return  Container(
-                        height: MediaQuery.of(context).size.height*0.8,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(child: new Gauge( value:attendance,annotation:"$attendancelabel", pointerColor: attendanceColor)),
-                            Expanded(child: new Gauge( value:marks,annotation:"$grades", pointerColor: resultColor)),
-                            Expanded(child: new Gauge( value:complain,annotation:"$complainlabel", pointerColor: complainColor)),
+                      return  Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Container(
+                          height: MediaQuery.of(context).size.height*0.9,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(child: new Gauge( value:attendance,annotation:"$attendancelabel", pointerColor: attendanceColor)),
+                              Expanded(child: new Gauge( value:marks,annotation:"$grades", pointerColor: resultColor)),
+                              Expanded(child: new Gauge( value:complain,annotation:"$complainlabel", pointerColor: complainColor)),
 
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     }));

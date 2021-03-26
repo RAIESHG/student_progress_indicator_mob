@@ -21,6 +21,7 @@ class _ViewResultState extends State<ViewResult> {
   Widget build(BuildContext context) {
     return  Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepPurpleAccent,
           title: Center(child: Text("View Result")),
         ),
         backgroundColor: Colors.grey[100],
@@ -33,10 +34,7 @@ class _ViewResultState extends State<ViewResult> {
                     primary: false,
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      information=[ic.informationcontents("Subject:"+snapshot.data[index].subject," Grade: "+snapshot.data[index].grade),
-                        ic.informationcontents(" Date: "+snapshot.data[index].date,""),
-                      ];
-                      double grades = double.parse(snapshot.data[index].grade);
+                      double grades = (double.parse(snapshot.data[index].grade));
                       if(grades<50){
                         resultColor=Colors.red;
                       }

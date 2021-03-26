@@ -18,11 +18,12 @@ class _DailyActivityState extends State<DailyActivity> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Daily Activities")),
+        backgroundColor: Colors.deepPurpleAccent,
+
       ),
-        backgroundColor: Colors.grey[100],
+
         body: FutureBuilder(
-        future: db.fetchActivity("${widget.date}"),
+        future: db.fetchActivity("${widget.date}"), //$widget.date
     builder: (BuildContext context, AsyncSnapshot snapshot) {
     if (snapshot.data != null) {
     return (ListView.builder(
@@ -30,11 +31,10 @@ class _DailyActivityState extends State<DailyActivity> {
     primary: false,
     itemCount: snapshot.data.length,
         itemBuilder: (BuildContext context, int index) {
-
-          information=[ic.informationcontents("Date:"+snapshot.data[index].date,"Attendance: "+snapshot.data[index].attendance),
-            ic.informationcontents("notice: "+snapshot.data[index].notice,"complain: "+snapshot.data[index].complain),
+          information=[ic.informationcontents("Date",snapshot.data[index].date,"Attendance",snapshot.data[index].attendance,Icons.date_range,Icons.sports_handball_sharp,context),
+            ic.informationcontents("Notice",snapshot.data[index].notice,"Complain",snapshot.data[index].complain,Icons.notifications_active_outlined,Icons.notifications_active,context),
           ];
-          return ic.informationcard(context,information);
+          return Column(children:[ic.informationcard(context,information,"Daily Activity"),]);
         }));
   }else{
       return CircularProgressIndicator();

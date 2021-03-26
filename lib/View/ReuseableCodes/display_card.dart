@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 
 class DisplayCard extends StatefulWidget {
@@ -82,19 +81,10 @@ class _DisplayCardState extends State<DisplayCard> {
 
   }
   Text uppertextstyle(String name){
-    return Text("$name",style: GoogleFonts.balooBhai(
-      fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
-      fontWeight: FontWeight.bold,
-      color: Colors.pinkAccent,
-      height: 1.5,
-    ));
+    return Text("$name");
   }
   Text lowertextstyle(String text){
-    return  Text("$text",style: GoogleFonts.balooBhai(
-      fontSize: ResponsiveFlutter.of(context).fontSize(1.7)  ,    fontWeight: FontWeight.bold,
-      color:Colors.purple ,
-      height: 1.5,
-    ));}
+    return  Text("$text");}
   Row textColumn(String uppertext1, String lowertext1 , String uppertext2, String lowertext2){
     return Row(
       children: [

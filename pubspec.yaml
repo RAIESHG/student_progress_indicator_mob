@@ -21,15 +21,18 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  google_fonts: ^1.1.1
+
   responsive_flutter: ^0.0.4
   syncfusion_flutter_gauges: ^18.4.47
   another_flushbar: ^1.10.17
   flutter_datetime_picker:
+  auto_size_text: ^2.1.0
   lottie: ^1.0.1
+  google_fonts:
 
   http:
   flutter:
+
     sdk: flutter
 
 
@@ -46,7 +49,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  assets:
+    - assets/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

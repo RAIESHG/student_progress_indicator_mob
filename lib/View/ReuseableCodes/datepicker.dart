@@ -20,7 +20,7 @@ class _DatePickState extends State<DatePick> {
   Widget build(BuildContext context) {
     String dates;
     return Scaffold(
-      appBar: AppBar(title:Text("Choose Date"),),
+      appBar: AppBar(title:Text("Choose Date"),  backgroundColor: Colors.deepPurpleAccent,),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,6 +31,10 @@ class _DatePickState extends State<DatePick> {
                 'https://assets10.lottiefiles.com/temporary_files/PH5YkW.json'),
 
             ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.deepPurpleAccent, // background
+                  onPrimary: Colors.white, // foreground
+                ),
                 onPressed: () {
                   DatePicker.showDatePicker(context,
                       showTitleActions: true,
@@ -39,8 +43,8 @@ class _DatePickState extends State<DatePick> {
                           headerColor: Colors.white,
                             backgroundColor: Colors.white,
                           itemStyle: TextStyle(
-                              color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 18),
-                          doneStyle: TextStyle(color: Colors.blue, fontSize: 16)),
+                              color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold, fontSize: 18),
+                          doneStyle: TextStyle(color: Colors.deepPurpleAccent, fontSize: 16)),
                     onConfirm: (date) {
                     dates='${date.year}-${date.month}-${date.day}';
                     if(widget.choosen=="assignment"){
