@@ -15,8 +15,7 @@ class Database{
   Future<List<Assignment>> fetchAssignment(String assigndate) async {
 
     var url = Uri.http('$BASE_URL','/getassignment',{'assigndate':'$assigndate','studentid':'$studentid'});
-    var data = await http
-        .get(url);
+    var data = await http.get(url);
 
     var jsonData = json.decode((data.body));
 
@@ -116,8 +115,9 @@ class Database{
           "password": password
         }
     );
-
+    print(res.body);
     var jsonData = json.decode((res.body));
+
 
     studentid=jsonData[0]['studentid'].toString();
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
 import 'package:student_progress_indicator_mob/View/main.dart';
 
 class InformationCard{
@@ -45,17 +46,20 @@ class InformationCard{
             ),
             child: Row(
               children: [
-                Expanded(child: Icon(icon,size: size.height*0.05,color: Colors.deepPurpleAccent, )),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10,0,0,0),
+                  child: Icon(icon,size: size.height*0.05,color: Colors.deepPurpleAccent.withOpacity(0.6), ),
+                ),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Expanded(child: Center(child: Text("$title",style: GoogleFonts.laila(fontWeight: FontWeight.bold),))),
+                      Expanded(child: Center(child: TextS(text:"$title",size: 2.2,color: Colors.black.withOpacity(0.9),))),
 
                       Expanded(child: Align(
                           alignment: Alignment.topCenter,
-                          child: Text("$lengthytext"))),
+                          child: TextS(text:"$lengthytext",size: 2,color: Colors.black54,))),
                     ],
                   ),
                 ),
@@ -69,8 +73,9 @@ class InformationCard{
 
   Widget informationcard(BuildContext context, List<Widget> information, String title){
     return Container(
+
       height: MediaQuery.of(context).size.height*1,
-      width: MediaQuery.of(context).size.width*0.5,
+      width: MediaQuery.of(context).size.width*1,
       child: Stack(
           children: [
       Container(
@@ -79,7 +84,7 @@ class InformationCard{
       decoration: BoxDecoration(
           color: Colors.deepPurpleAccent
       ),
-      child: Center(child: Text("$title",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),)),
+      child: Center(child: TextS(text:"$title",size:3,color:Colors.white)),
     ),
             SizedBox(height: MediaQuery.of(context).size.height*0.2,),
     Column(
@@ -108,8 +113,8 @@ class InformationCard{
     context: context,
     builder: (context) =>
         AlertDialog(
-            title: Text(title),
-            content: Text(text)
+            title: TextS(text:title,size: 2.7,color:Colors.deepPurpleAccent),
+            content: TextS(text:text,size:3,color:Colors.deepPurple),
         ),
   );
 

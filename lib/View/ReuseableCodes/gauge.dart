@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class Gauge extends StatefulWidget {
@@ -29,23 +30,14 @@ class _GaugeState extends State<Gauge> {
                     angle: 90,
                     axisValue: 5,
                     positionFactor: 0.1,
-                    widget: Text('${widget.value}%',
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight
-                                .bold,
-                            color: widget.pointerColor))
+                    widget: TextS(text:'${widget.value}%',size:2.5,color:widget.pointerColor)
                 ),
                 GaugeAnnotation(
                     angle: 90,
                     axisValue: 5,
                     positionFactor: 0.3,
-                    widget: Text('${widget.annotation}',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight
-                                .bold,
-                            color: widget.pointerColor))
+                    widget: TextS(text:'${widget.annotation}',
+                      size: 2.5,color: widget.pointerColor,)
                 )
               ] ),]
       );

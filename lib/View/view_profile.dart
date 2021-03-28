@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:student_progress_indicator_mob/Controller/database.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/loadingscreen.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
 import 'package:student_progress_indicator_mob/View/main.dart';
 
 class ViewProfile extends StatefulWidget {
@@ -17,22 +19,20 @@ class _ViewProfileState extends State<ViewProfile> {
     return  Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurpleAccent,
-          title: Center(child: Text("Profile")),
+          title: Center(child: TextS(text:"Profile",size:3,color:Colors.white)),
         ),
         backgroundColor:Colors.white,
         body: FutureBuilder(
             future: db.fetchstudent(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-
               if (snapshot.data != null) {
                 information=[ic.informationcontents("Email:",snapshot.data[0].email,"Phone: ",snapshot.data[0].phonenumber,Icons.email_outlined,Icons.phone,context),
                   SizedBox(height: size.height*0.03,),
                   ic.informationcontents("Class: ",snapshot.data[0].classs,"Section: ",snapshot.data[0].section,Icons.people,Icons.speaker_group_rounded,context),
                 ]; return ic.informationcard(context, information,"${snapshot.data[0].studentname}");
-
   }
               else{
-                return CircularProgressIndicator();
+                return LoadingScreen();
               }
 }));}
 

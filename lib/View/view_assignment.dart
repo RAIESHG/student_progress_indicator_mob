@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:student_progress_indicator_mob/Controller/database.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/loadingscreen.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/nodatafound.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
 import 'package:student_progress_indicator_mob/View/main.dart';
 
 
@@ -19,15 +22,16 @@ class _ViewAssignmentState extends State<ViewAssignment> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Assignments")),
+        title: Center(child: TextS(text:"Assignments",size:3,color:Colors.white)),
         backgroundColor: Colors.deepPurpleAccent,
-
       ),
-
         body: FutureBuilder(
             future: db.fetchAssignment("${widget.date}"),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-              if (snapshot.data != null) {
+              if (snapshot.data!=null) {
+            int count = snapshot.data.length;
+            print(count);
+            if(count>=1){
                 return (ListView.builder(
                     shrinkWrap: true,
                     primary: false,
@@ -43,11 +47,14 @@ class _ViewAssignmentState extends State<ViewAssignment> {
                         child: Column(
                           children: information
                         ),
-
                       );
                     }));
+              }
+              else{
+                return NoData();
+            }
               }else{
-                return CircularProgressIndicator();
+                return LoadingScreen();
               }
             }));
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:student_progress_indicator_mob/Controller/database.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/loadingscreen.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/nodatafound.dart';
 
 
 class DailyActivity extends StatefulWidget {
@@ -25,7 +27,10 @@ class _DailyActivityState extends State<DailyActivity> {
         body: FutureBuilder(
         future: db.fetchActivity("${widget.date}"), //$widget.date
     builder: (BuildContext context, AsyncSnapshot snapshot) {
-    if (snapshot.data != null) {
+    if (snapshot.hasData) {
+      int count = snapshot.data.length;
+      print(count);
+      if(count>=1){
     return (ListView.builder(
     shrinkWrap: true,
     primary: false,
@@ -37,7 +42,9 @@ class _DailyActivityState extends State<DailyActivity> {
           return Column(children:[ic.informationcard(context,information,"Daily Activity"),]);
         }));
   }else{
-      return CircularProgressIndicator();
+        return NoData();
+      }}else{
+      return LoadingScreen();
     }
     }));
   }

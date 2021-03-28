@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:student_progress_indicator_mob/Controller/database.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/gauge.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
-
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/loadingscreen.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/nodatafound.dart';
+import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
-
 
 class ViewProgress extends StatefulWidget {
   @override
@@ -23,60 +24,75 @@ class _ViewProgressState extends State<ViewProgress> {
     return  Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurpleAccent,
-          title: Center(child: Text("Progress")),
+          title: Center(child: TextS(text:"Progress",size:3,color:Colors.white)),
         ),
         backgroundColor: Colors.grey[100],
         body: FutureBuilder(
             future: db.studentprogress(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.data != null) {
+                int count = snapshot.data.length;
+                if(count>=1){
                 return (ListView.builder(
                     shrinkWrap: true,
                     primary: false,
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      double attendance = (double.parse(snapshot.data[index].attendance)).roundToDouble();
-                      double complain = (double.parse(snapshot.data[index].complain)).roundToDouble();
-                      double marks = (double.parse(snapshot.data[index].averagemarks)).roundToDouble();
+                      double attendance=0;
+                      double complain=0;
+                      double marks=0;
                       String grades="Grades";
                       String attendancelabel="Attendance";
                       String complainlabel="Complain";
-                      if(snapshot.data[index].averagemarks==null){
-                        grades="No Record";
-                        marks=0;
-                      }
-                      if(snapshot.data[index].attendance==null){
+                      print(snapshot.data[index].attendance);
+
+
+
+                      if(snapshot.data[index].attendance=="null"){
                         attendancelabel="No Record";
-                        marks=0;
+
                       }
-                      if(snapshot.data[index].complain==null){
-                        complainlabel="No Record";
-                        marks=0;
-                      }
+                      else{
+                          attendance = (double.parse(snapshot.data[index].attendance)).roundToDouble();
+                    }
+                      if(snapshot.data[index].complain=="null"){    complainlabel="No Record";
+                    }
+                      else{     complain = (double.parse(snapshot.data[index].complain)).roundToDouble();
+                 }
+                      if(snapshot.data[index].averagemarks=="null"){grades="No Record";
+                    }
+                      else{     marks = (double.parse(snapshot.data[index].averagemarks)).roundToDouble();
+                     }
+
+
                       if(attendance<50){
                         attendanceColor=Colors.red;
                       }
                       else if(attendance>=50 && attendance<80){
-
                         attendanceColor=Colors.orange;
-
+                      }
+                      else{
+                        attendanceColor=Colors.green;
                       }
                       if(complain>35){
                         complainColor=Colors.red;
                       }
                       else if(complain>=15 && complain<35){
-
-                        resultColor=Colors.orange;
-
+                        complainColor=Colors.orange;
+                      }
+                      else{
+                        complainColor=Colors.green;
                       }
                       if(marks<50){
                         resultColor=Colors.red;
                       }
                       else if(marks>=50 && marks<80){
-
                         resultColor=Colors.orange;
-
                       }
+                      else{
+                        resultColor=Colors.green;
+                      }
+
                       return  Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Container(
@@ -84,17 +100,21 @@ class _ViewProgressState extends State<ViewProgress> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Expanded(child: new Gauge( value:attendance,annotation:"$attendancelabel", pointerColor: attendanceColor)),
-                              Expanded(child: new Gauge( value:marks,annotation:"$grades", pointerColor: resultColor)),
-                              Expanded(child: new Gauge( value:complain,annotation:"$complainlabel", pointerColor: complainColor)),
-
+                              Expanded(child:  Gauge( value:attendance,annotation:"$attendancelabel", pointerColor: attendanceColor)),
+                              Expanded(child:  Gauge( value:marks,annotation:"$grades", pointerColor: resultColor)),
+                              Expanded(child:  Gauge( value:complain,annotation:"$complainlabel", pointerColor: complainColor)),
                             ],
                           ),
                         ),
                       );
                     }));
-              }else{
-                return CircularProgressIndicator();
+              }
+                else{
+                  return NoData();
+                }
+              }
+              else{
+                return LoadingScreen();
               }
             }));
   }
