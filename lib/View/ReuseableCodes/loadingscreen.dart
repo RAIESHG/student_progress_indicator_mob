@@ -15,13 +15,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
-          Container(
-              height: size.height*0.3,
-              child: Center(child: Lottie.asset("assets/loading.json"))),
+          Container(height: size.height*0.3, child: Center(child: Lottie.asset("assets/loading.json"))),
           TextS(text:"Loading..Please Check Your Internet Connection",size: 1.8,color: Colors.black,),
-
-
         ],
       ),
     );

@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
                                       var jwt =
                                           await db.attemptLogIn(email, password);
-                                      print("${jwt}+jwttttt");
+
 
 
                                       if (jwt == 200) {

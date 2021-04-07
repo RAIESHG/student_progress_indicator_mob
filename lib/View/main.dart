@@ -17,7 +17,9 @@ Size size;
 String BASE_URL = "192.168.2.12:3000";
 void main() {
   db.fetchstudent();
-  runApp(MaterialApp(home: Dashboard()));
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Dashboard()));
 }
 
 

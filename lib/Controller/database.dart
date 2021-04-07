@@ -107,6 +107,8 @@ class Database{
 
   Future<int> attemptLogIn(String username, String password) async {
     var url = Uri.http('$BASE_URL','/login');
+    var status;
+    try{
 
     var res = await http.post(
         url,
@@ -115,13 +117,21 @@ class Database{
           "password": password
         }
     );
-    print(res.body);
+
     var jsonData = json.decode((res.body));
 
 
     studentid=jsonData[0]['studentid'].toString();
 
-    return res.statusCode;
+    status=res.statusCode;
+    }
+    catch(e){
+
+      status=404;
+
+    }
+
+    return status;
   }
 
   Future<int> attemptSignUp(String username, String password) async {

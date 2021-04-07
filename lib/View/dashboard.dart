@@ -27,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
           decoration: BoxDecoration(
             color: Colors.deepPurpleAccent
           ),
-          child: Center(child: TextS(text:"Dashboard",size:3,color:Colors.white)),
+          child: Center(child: TextS(text:"HomePage",size:3,color:Colors.white)),
         ),
        Column(
          children: [
