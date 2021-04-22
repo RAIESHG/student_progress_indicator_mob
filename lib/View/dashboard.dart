@@ -4,11 +4,12 @@ import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.d
 
 import 'package:student_progress_indicator_mob/View/daily_activity.dart';
 import 'package:student_progress_indicator_mob/View/login.dart';
-import 'package:student_progress_indicator_mob/View/main.dart';
+
 import 'package:student_progress_indicator_mob/View/view_assignment.dart';
 import 'package:student_progress_indicator_mob/View/view_profile.dart';
 import 'package:student_progress_indicator_mob/View/view_progress.dart';
 import 'package:student_progress_indicator_mob/View/view_result.dart';
+import 'package:student_progress_indicator_mob/main.dart';
 
 
 class Dashboard extends StatefulWidget {

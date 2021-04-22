@@ -4,7 +4,8 @@ import 'package:student_progress_indicator_mob/Controller/database.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_card.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/loadingscreen.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
-import 'package:student_progress_indicator_mob/View/main.dart';
+import 'package:student_progress_indicator_mob/main.dart';
+
 
 class ViewProfile extends StatefulWidget {
   @override

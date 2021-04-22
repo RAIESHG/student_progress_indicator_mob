@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
-import 'package:student_progress_indicator_mob/View/main.dart';
+import 'package:student_progress_indicator_mob/main.dart';
+
 
 class InformationCard{
+
   Widget informationcontents(String texttitle1,String text1, String texttitle2,String text2,IconData icon1,IconData icon2, BuildContext context){
     return   Expanded(
       child: Row(

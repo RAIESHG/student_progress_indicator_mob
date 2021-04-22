@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
-import 'package:student_progress_indicator_mob/View/main.dart';
+import 'package:student_progress_indicator_mob/main.dart';
+
 
 class LoadingScreen extends StatefulWidget {
   @override

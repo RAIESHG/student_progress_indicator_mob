@@ -4,7 +4,8 @@ import 'package:student_progress_indicator_mob/View/ReuseableCodes/information_c
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/loadingscreen.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/nodatafound.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
-import 'package:student_progress_indicator_mob/View/main.dart';
+import 'package:student_progress_indicator_mob/main.dart';
+
 
 
 class ViewAssignment extends StatefulWidget {

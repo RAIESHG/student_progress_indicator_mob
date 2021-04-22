@@ -7,7 +7,8 @@ import 'package:student_progress_indicator_mob/Models/progress_model.dart';
 import 'package:student_progress_indicator_mob/Models/result_model.dart';
 import 'package:student_progress_indicator_mob/Models/student_model.dart';
 import 'package:student_progress_indicator_mob/Models/user_model.dart';
-import 'package:student_progress_indicator_mob/View/main.dart';
+import 'package:student_progress_indicator_mob/main.dart';
+
 
 
 class Database{
@@ -31,7 +32,7 @@ class Database{
   Future<List<ActivityModel>> fetchActivity(String date) async {
     var url = Uri.http('$BASE_URL','/getactivity',{'date':'$date','studentid':'$studentid'});
 
-    var data = await http.get(url); //link ma bhako sabai kura
+    var data = await http.get(url);
     var jsonData = json.decode((data.body));
 
     List<ActivityModel> activitylist = [];

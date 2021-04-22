@@ -1,4 +1,4 @@
-import 'dart:ui';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,8 @@ import 'package:student_progress_indicator_mob/Controller/database.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/message_box.dart';
 import 'package:student_progress_indicator_mob/View/ReuseableCodes/textstyling.dart';
 import 'package:student_progress_indicator_mob/View/dashboard.dart';
-import 'package:student_progress_indicator_mob/View/main.dart';
+import 'package:student_progress_indicator_mob/main.dart';
+
 
 
 class LoginPage extends StatefulWidget {
@@ -18,6 +19,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
+
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -60,9 +63,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   flex: 2,
                   child: Align(
                     alignment: Alignment.topCenter,
-                    child: Lottie.network(
-                        'https://assets1.lottiefiles.com/private_files/lf30_nIhxTu.json'),
-                  ),
+                    child: Lottie.asset("assets/students.json"))
                 ),
 
                 Expanded(
@@ -79,6 +80,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           Expanded(
                             flex: 2,
                             child: TextFormField(
+
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
                                   prefixIcon: Icon(
@@ -106,6 +108,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                           Expanded(
                             flex: 1,
                             child: TextFormField(
+
                               decoration: InputDecoration(
                                   prefixIcon: Icon(
                                     Icons.lock,
@@ -139,6 +142,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                             child: Container(
                               width: double.infinity,
                               child: RaisedButton(
+
                                 color: purcolor,
                                 onPressed: () async {
                                   FocusScope.of(context).unfocus();
